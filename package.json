@@ -3,6 +3,7 @@
   "description": "transliteration from English (Latin) to Russian (Cyrillic) and vice versa",
   "files": [
     "index.js",
+    "index.d.ts",
     "package.json",
     "README.md"
   ],
@@ -16,9 +17,9 @@
   "name": "rus-eng-transliteration",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Constantine-P/rus-eng-transliteration.git"
+    "url": "git+https://github.com/Constantine-P/rus-eng-transliteration.git"
   },
   "type": "module",
   "types": "index.d.ts",
-  "version": "0.0.1"
+  "version": "0.0.2"
 }
