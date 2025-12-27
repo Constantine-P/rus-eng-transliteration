@@ -72,6 +72,8 @@ export function convert(str, options = {}) {
   let output = Array.prototype.map.call(str, (character) => rusToEngMap[character] ?? character).join('');
   if (options.slugify) {
     output = slugify(output);
+  } else {
+    output = unSlugify(output);
   }
   if (options.lowerCase) {
     output = output.toLowerCase();
@@ -86,6 +88,8 @@ export function reverse(str, options = {}) {
   });
   if (options.slugify) {
     output = slugify(output);
+  } else {
+    output = unSlugify(output);
   }
   if (options.lowerCase) {
     output = output.toLowerCase();
@@ -94,5 +98,23 @@ export function reverse(str, options = {}) {
 }
 
 function slugify(str) {
-  return str.replaceAll(' ', '-');
+  return str.replaceAll(/\s|-/g, (substring) => {
+    if (substring === ' ') {
+      return '-';
+    }
+    if (substring === '-') {
+      return '--';
+    }
+  });
+}
+
+function unSlugify(str) {
+  return str.replaceAll(/(--)|-/g, (substring) => {
+    if (substring === '-') {
+      return ' ';
+    }
+    if (substring === '--') {
+      return '-';
+    }
+  });
 }
